@@ -10,10 +10,10 @@
 Self-hosted multi-agent offensive security. A planner explores, workers run real tools,
 and every finding stays bound to the assets and HTTP traffic that prove it.
 
-[![Release](https://img.shields.io/github/v/release/BaaRai/ARTEX?label=release&color=6b34db)](https://github.com/BaaRai/ARTEX/releases)
-[![License](https://img.shields.io/github/license/BaaRai/ARTEX?color=6b34db)](LICENSE)
-[![CI](https://github.com/BaaRai/ARTEX/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/BaaRai/ARTEX/actions/workflows/ci.yml)
-[![Go](https://img.shields.io/github/go-mod/go-version/BaaRai/ARTEX?color=6b34db)](go.mod)
+[![Upstream release](https://img.shields.io/github/v/release/BaaRai/ARTEX?label=upstream%20release&color=6b34db)](https://github.com/BaaRai/ARTEX/releases)
+[![License](https://img.shields.io/github/license/edwardkenway80/ARTEX_eK-lab?color=6b34db)](LICENSE)
+[![CI](https://github.com/edwardkenway80/ARTEX_eK-lab/actions/workflows/ci.yml/badge.svg?branch=improvements%2Fek-lab-branding)](https://github.com/edwardkenway80/ARTEX_eK-lab/actions/workflows/ci.yml)
+[![Go](https://img.shields.io/github/go-mod/go-version/edwardkenway80/ARTEX_eK-lab?color=6b34db)](go.mod)
 [![Discord](https://img.shields.io/badge/Discord-join%20the%20server-5865F2?logo=discord&logoColor=white)](https://discord.gg/VKyvMTcgXh)
 
 [Quick start](#quick-start) · [Screenshots](#screenshots) · [How it works](#how-it-works) · [Install](#installation) · [Configuration](#configuration) · [Security](SECURITY.md)
@@ -46,8 +46,8 @@ justify it, and every autonomous action passes through scope rules, approval gat
 ## Quick start
 
 ```bash
-git clone https://github.com/BaaRai/ARTEX.git
-cd ARTEX
+git clone https://github.com/edwardkenway80/ARTEX_eK-lab.git
+cd ARTEX_eK-lab
 cp .env.example .env            # set POSTGRES_PASSWORD (and optionally an LLM key)
 docker compose up -d --build    # builds from this checkout, starts PostgreSQL
 ```
@@ -319,8 +319,8 @@ worker remains confined to the intent it claimed.
 ### Option 1: one-click install script (recommended)
 
 ```bash
-git clone https://github.com/BaaRai/ARTEX.git
-cd ARTEX
+git clone https://github.com/edwardkenway80/ARTEX_eK-lab.git
+cd ARTEX_eK-lab
 ./install.sh
 ```
 
@@ -340,8 +340,8 @@ first-run claim), or keep loopback and use a reverse proxy or SSH tunnel.
 Build from a checkout with Docker Compose:
 
 ```bash
-git clone https://github.com/BaaRai/ARTEX.git
-cd ARTEX
+git clone https://github.com/edwardkenway80/ARTEX_eK-lab.git
+cd ARTEX_eK-lab
 cp .env.example .env            # set POSTGRES_PASSWORD, optionally ANTHROPIC_API_KEY
 docker compose up -d --build
 # → http://localhost:8787
@@ -823,7 +823,7 @@ Your data is unaffected: `./data`, the `pgdata` volume and `./skills` are not pa
 #### Option 1: one-click update script
 
 ```bash
-cd ARTEX
+cd ARTEX_eK-lab
 ./update.sh
 ```
 
@@ -834,7 +834,7 @@ recompile `./artex`; restart the process for it to take effect).
 #### Option 2: Docker (Compose or GHCR image)
 
 ```bash
-cd ARTEX
+cd ARTEX_eK-lab
 git pull
 docker compose build artex
 docker compose up -d artex
@@ -958,7 +958,7 @@ backup and key rotation see [docs/OPS.md](docs/OPS.md).
 
 ## Security
 
-Please report vulnerabilities privately through GitHub Security Advisories; see
+Security reporting and the limits of this fork's security review are documented in
 [SECURITY.md](SECURITY.md).
 
 Operational security properties:
@@ -981,7 +981,7 @@ Operational security properties:
 
 ## About this project
 
-This repository is the actively maintained community continuation of ARTEX, originally by [Autumn-27](https://github.com/Autumn-27). It diverges from the original with its own features and fixes, tracked in [CHANGELOG.md](CHANGELOG.md), under the same AGPL-3.0 license. The original repository is no longer public, so the link points to the author profile.
+**ARTEX eK-Lab** is an independently maintained fork of [BaaRai/ARTEX](https://github.com/BaaRai/ARTEX). It preserves the upstream project's identity and license while providing a separate space for eK-Lab branding, documentation improvements and future changes. The upstream repository remains the authoritative source for upstream releases and project history; this fork does not claim to be the upstream project or its official release channel.
 
 ---
 
