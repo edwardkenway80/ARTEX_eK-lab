@@ -1,4 +1,6 @@
-# Security Policy
+# Security Policy — ARTEX eK-Lab
+
+This policy applies to this fork (`edwardkenway80/ARTEX_eK-lab`). It is maintained separately from upstream ARTEX. Security fixes, supported versions and response commitments made by upstream do not automatically apply to this fork.
 
 ## Supported Versions
 
@@ -14,7 +16,7 @@ Notes:
 
 **Do not open a public issue for a security vulnerability.**
 
-Sign in to GitHub and use the [private vulnerability report form](https://github.com/BaaRai/ARTEX/security/advisories/new). You can also reach it from the repository's **Security and quality** tab under **Advisories** → **Report a vulnerability**. This is the only reporting channel.
+For vulnerabilities specific to this fork, use **Security → Advisories → Report a vulnerability** on this repository if GitHub enables private vulnerability reporting for it. If that option is unavailable, do not publish exploit details in a public issue; contact the repository maintainer privately through GitHub. For vulnerabilities in the upstream project itself, use the [upstream security reporting page](https://github.com/BaaRai/ARTEX/security/advisories/new). Upstream reports do not automatically notify this fork's maintainer.
 
 Please include:
 - A description of the vulnerability and its expected impact.
@@ -34,6 +36,16 @@ ARTEX is an offensive-security tool. Test only against:
 - Targets explicitly authorized in writing (bug bounty, pentest contract, etc.).
 
 Testing, scanning, or exploiting third-party systems without explicit authorization is strictly prohibited. Reports that violate this principle may be closed without action.
+
+## Fork security review notes
+
+The following are documented limitations observed in the code and should be treated as operational risks, not as proof that the application is secure or insecure in every deployment:
+
+- **BBOT ingestion trust:** `ingest_bbot` consumes `scope_distance` from scanner output as the scanner's verdict; ARTEX does not independently re-evaluate that field against its own scope rules. `insert_assets` applies block rules and applies a task allow-list only when one is configured. When no allow-list exists, an in-scope event not blocked by the configured rules can enter the asset graph. Configure a task allow-list and review scanner output before ingestion when strict scope control is required.
+- **Filesystem containment is partial:** agent file tools use `os.Root` to confine their paths to the working directory, and agent processes can be run under a reduced UID/GID. This is a containment layer, not a complete sandbox. The code still contains root-owned path-based reads/writes and residual symlink/race risks in areas including scan ingestion, uploads, archive packaging, and temporary task output. Keep the host and data directory protected, enable the executor privilege drop, and do not expose sensitive host files to the runtime.
+- **Network and credentials:** an agent can use credentials and network access intentionally made available to the platform. Restrict outbound connectivity, API credentials, MCP servers, custom tools and target scope to the minimum required.
+
+These notes are a documentation-level review of identified trust boundaries. They are not a formal audit, penetration test, or guarantee that all vulnerabilities have been found or fixed.
 
 ## Trusted Inputs and Scope Enforcement
 
