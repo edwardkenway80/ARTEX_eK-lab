@@ -4,13 +4,9 @@ This policy applies to this fork (`edwardkenway80/ARTEX_eK-lab`). It is maintain
 
 ## Supported Versions
 
-ARTEX is an autonomous penetration-testing tool. Security fixes are provided only for the latest official release line. The `main` branch is not considered a stable release and may change at any time.
+ARTEX is an autonomous penetration-testing tool. This repository is a separately maintained fork, not an official upstream release channel. There is currently no independently declared supported-version matrix or guaranteed security-fix schedule for this fork. The upstream project's supported versions and release statements apply only to upstream artifacts.
 
-Only the latest release line receives security fixes. Older releases do not receive fixes; please upgrade to the latest release.
-
-Notes:
-- Please upgrade to the latest release before reporting a vulnerability.
-- Forks, custom builds from arbitrary commits, and modified versions are not covered by official support.
+Before reporting, identify the affected fork commit or release and check whether the behavior also exists in upstream. Do not assume that upgrading to an upstream release updates this fork.
 
 ## Reporting a Vulnerability
 
